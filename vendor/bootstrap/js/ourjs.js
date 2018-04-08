@@ -1,5 +1,19 @@
+
+
+
 window.smoothScroll = function(target) {
     var scrollContainer = target;
+    var v=1;
+    var reply_click = function()
+    {
+        if(this.id == "btn_a"){
+            v=0;
+        }else if(this.id == "btn_b"){
+            v=1;
+        }
+    }
+   
+
     do { //find scroll container
         scrollContainer = scrollContainer.parentNode;
         if (!scrollContainer) return;
@@ -14,9 +28,12 @@ window.smoothScroll = function(target) {
 
     scroll = function(c, a, b, i) {
         i++; if (i > 30) return;
-        c.scrollTop = a + (b - a) / 30 * i;
-        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+        if(v==0){c.scrollTop = a + (b - a) / 32.2 * i;}
+        else if(v==1){c.scrollTop = a + (b - a) / 35 * i;}
+        setTimeout(function(){ scroll(c, a, b, i); }, 10);
     }
     // start scrolling
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
+
+

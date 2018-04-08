@@ -1,11 +1,7 @@
-
-
-
 div.div_hire{
-    background-color: 
-    #66CDAA;
+    background-color: #66CDAA;
     width: 100%;
-    height: 750px;
+    height: 94vh;
     color: whitesmoke;
 }
 
@@ -13,7 +9,7 @@ div.div_work{
     background-color:
     #6A5ACD;
     width: 100%;
-    height: 750px;
+    height: 94vh;
     color: whitesmoke
 }
 
@@ -29,9 +25,8 @@ div.div_goto{
     }
 
     div.div_mobi{
-        background-image: url(images/b3.png);
+        background-color:red;
         width: 100%;
-        height: 750px;
+        height: 97vh;
     }
 }
-

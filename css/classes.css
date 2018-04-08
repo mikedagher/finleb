@@ -2,9 +2,19 @@
 
 
 div.div_hire{
-    background-image: url(images/b5.jpg);
+    background-color: 
+    #66CDAA;
     width: 100%;
     height: 750px;
+    color: whitesmoke;
+}
+
+div.div_work{
+    background-color:
+    #6A5ACD;
+    width: 100%;
+    height: 750px;
+    color: whitesmoke
 }
 
 div.div_goto{

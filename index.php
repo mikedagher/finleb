@@ -4,7 +4,7 @@
   <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -117,12 +117,59 @@
 
 
 
-
-
+<form action="index.php" method="POST">
 <div class="div_hire" id="div_hire">
-   
-  
+  <h1>Test</h1>
+<h1>
+  <nav id="menu">
+    <label for="tm" id="toggle-menu">Navigation <span class="drop-icon">▾</span></label>
+    <input type="checkbox" id="tm">
+    <ul class="main-menu clearfix">
+    
+      <li>  
+                <a href="#">Select<span class="drop-icon">▾</span> 
+                <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
+                </a>
+
+                <input type="checkbox" id="sm1">
+                
+                <ul class="sub-menu">
+                <?php
+                    include ("php/connexion.inc.php");
+                    $idcon = connex();
+                    extract($_POST);
+                    $query = "SELECT * From category";
+                    $result = mysqli_query($idcon,$query);
+
+                    while($row = mysqli_fetch_array($result)){
+                        echo"
+                        <li><a href='#'>{$row['cat_name']}
+                            <span class='drop-icon'>▾</span>
+                            <label title='Toggle Drop-down' class='drop-icon' for='sm2'>▾</label>
+                        </a>
+                        <input type='checkbox' id='sm2'>
+                        <ul class='sub-menu'>";
+                        $id=$row['cat_id'];
+                        $query_sub = "SELECT * FROM subcategory where sub_cat_id=$id";
+                        $result_sub = mysqli_query($idcon,$query_sub);
+                        while($row_sub=mysqli_fetch_array($result_sub)){
+                            echo"
+                            <li><a href='#'>{$row_sub['sub_name']}</a></li>";
+                        }
+                            echo"
+                            </ul>
+                            </li>
+";  
+                }
+                ?>
+                
+ </ul>
+      </li>
+    </ul>
+  </nav>
+  </h1> 
   </div>
+</form>
  
 
 <div class="div_work" id="div_work">

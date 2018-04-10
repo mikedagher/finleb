@@ -153,10 +153,6 @@
   </nav>
   </h1> 
 
-<<<<<<< HEAD
-
-  
-=======
   <!--radio buttons-->
   <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -172,11 +168,10 @@
   </div>
 
 
->>>>>>> 108bba54d0c4e5177122fb9233b6448a68ea6acb
   </div>
  
 
-<div class="div_work" id="div_work">
+<div class="div_work" id="div_work"
   <br>
 <form id="regForm" action="/action_page.php">
 

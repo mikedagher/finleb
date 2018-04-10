@@ -103,7 +103,8 @@
 
 
 <div class="div_hire" id="div_hire">
-  <h1>Test</h1>
+  <h1>FINLEB </h1>
+  <h2> What do you want to explore?</h2>
 <h1>
   <nav id="menu">
     <label for="tm" id="toggle-menu">Navigation <span class="drop-icon">▾</span></label>
@@ -151,6 +152,9 @@
     </ul>
   </nav>
   </h1> 
+
+
+  
   </div>
  
 

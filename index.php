@@ -94,10 +94,10 @@
     </div>
 
     <div class="div_goto">
-      <button type="button" class="btn btn-primary" href="#second" onclick="scrollSmoothToBottom('div_hire')">I want to hire</button>
+      <button type="button" class="btn btn-primary" href="#second" onclick="smoothScroll(document.getElementById('div_hire'))">I want to hire</button>
       <button type="button" class="btn btn-primary" href="#second" onclick="smoothScroll(document.getElementById('div_work'))">I want to work</button>
     </div>
-    
+
 
 
 <div class="div_hire" id="div_hire">

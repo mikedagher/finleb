@@ -129,7 +129,7 @@
                     echo "<link href='css/classes.css' rel='stylesheet'>";
                     while($row = mysqli_fetch_array($result)){
                         echo"
-                        <li><a href='jobs_list.php'>{$row['cat_name']}
+                        <li><a>{$row['cat_name']}
                             <span class='drop-icon'>▾</span>
                             <label title='Toggle Drop-down' class='drop-icon' for='sm2'>▾</label>
                         </a>

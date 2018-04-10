@@ -9,6 +9,10 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="css/classes.css" rel="stylesheet">
+
+<script src="jquery-3.3.1.min.js"></script>
+
+
 </head>
 <body>
     
@@ -113,110 +117,116 @@ echo "$hi1";
 
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/jobscarousel.css" />
+<script>
+$("#myCarousel").on("slide.bs.carousel", function(e) {
+  var $e = $(e.relatedTarget);
+  var idx = $e.index();
+  var itemsPerSlide = 3;
+  var totalItems = $(".carousel-item").length;
 
-<section class="container p-t-3">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1>Bootstrap 4 Card Slider</h1>
-        </div>
-    </div>
-</section>
-<section class="carousel slide" data-ride="carousel" id="postsCarousel">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 text-md-right lead">
-                <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
-                <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="container p-t-0 m-t-2 carousel-inner">
-        <div class="row row-equal carousel-item active m-t-0">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-img-top card-img-top-250">
-                        <img class="img-fluid" src="http://i.imgur.com/EW5FgJM.png" alt="Carousel 1">
-                    </div>
-                    <div class="card-block p-t-2">
-                        <h6 class="small text-wide p-b-2">Insight</h6>
-                        <h2>
-                            <a href>Why Stuff Happens Every Year.</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-img-top card-img-top-250">
-                        <img class="img-fluid" src="http://i.imgur.com/Hw7sWGU.png" alt="Carousel 2">
-                    </div>
-                    <div class="card-block p-t-2">
-                        <h6 class="small text-wide p-b-2">Development</h6>
-                        <h2>
-                            <a href>How to Make Every Line Count.</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-img-top card-img-top-250">
-                        <img class="img-fluid" src="http://i.imgur.com/g27lAMl.png" alt="Carousel 3">
-                    </div>
-                    <div class="card-block p-t-2">
-                        <h6 class="small text-wide p-b-2">Design</h6>
-                        <h2>
-                            <a href>Responsive is Essential.</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row row-equal carousel-item m-t-0">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-img-top card-img-top-250">
-                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/office-student-work-study.jpg" alt="Carousel 4">
-                    </div>
-                    <div class="card-block p-t-2">
-                        <h6 class="small text-wide p-b-2">Another</h6>
-                        <h2>
-                            <a href>Tagline or Call-to-action.</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-img-top card-img-top-250">
-                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/working-woman-technology-computer.jpg" alt="Carousel 5">
-                    </div>
-                    <div class="card-block p-t-2">
-                        <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category 1</h6>
-                        <h2>
-                            <a href>This is a Blog Title.</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 fadeIn wow">
-                <div class="card">
-                    <div class="card-img-top card-img-top-250">
-                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/people-office-team-collaboration.jpg" alt="Carousel 6">
-                    </div>
-                    <div class="card-block p-t-2">
-                        <h6 class="small text-wide p-b-2">Category 3</h6>
-                        <h2>
-                            <a href>Catchy Title of a Blog Post.</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  if (idx >= totalItems - (itemsPerSlide - 1)) {
+    var it = itemsPerSlide - (totalItems - idx);
+    for (var i = 0; i < it; i++) {
+      // append slides to end
+      if (e.direction == "left") {
+        $(".carousel-item")
+          .eq(i)
+          .appendTo(".carousel-inner");
+      } else {
+        $(".carousel-item")
+          .eq(0)
+          .appendTo(".carousel-inner");
+      }
+    }
+  }
+});
 
-
+</script>
+<div class="container-fluid">
+  <h1 class="text-center mb-3">Bootstrap Multi-Card Carousel</h1>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+      <div class="carousel-item col-md-4 active">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 1</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 2</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/3ed846/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 3</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/42ebf4/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 4</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f49b41/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 5</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f4f141/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 6</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/8e41f4/fff" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card 7</h4>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
 
 
 

@@ -92,10 +92,11 @@
 
     <div class="div_mobi">
     </div>
+    
 
     <div class="div_goto">
-      <button type="button" class="btn btn-primary" href="#second" onclick="smoothScroll(document.getElementById('div_hire'))">I want to hire</button>
-      <button type="button" class="btn btn-primary" href="#second" onclick="smoothScroll(document.getElementById('div_work'))">I want to work</button>
+      <button type="button" class="btn btn-primary" href="#second" onclick="smoothScrollA(document.getElementById('div_hire'))">I want to hire</button>
+      <button type="button" class="btn btn-primary" href="#second" onclick="smoothScrollB(document.getElementById('div_work'))">I want to work</button>
     </div>
 
 

@@ -5,10 +5,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Full Slider - Start Bootstrap Template</title>
 <!-- multi step form  -->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -195,6 +193,8 @@
       <span class="step"></span>
     </div>
   </form>
+
+  
 </div>
 
 

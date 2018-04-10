@@ -171,7 +171,7 @@
   </div>
  
 
-<div class="div_work" id="div_work"
+<div class="div_work" id="div_work">
   <br>
 <form id="regForm" action="/action_page.php">
 

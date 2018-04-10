@@ -119,17 +119,19 @@
                 <input type="checkbox" id="sm1">
                 
                 <ul class="sub-menu">
+                
                 <?php
-              
                     include ("php/connexion.inc.php");
                     $idcon = connex();
                     extract($_POST);
+
                     $query = "SELECT * From category";
                     $result = mysqli_query($idcon,$query);
+
                     echo "<link href='css/classes.css' rel='stylesheet'>";
                     while($row = mysqli_fetch_array($result)){
                         echo"
-                        <li><a href='#'>{$row['cat_name']}
+                        <li><a href='jobs_list.php'>{$row['cat_name']}
                             <span class='drop-icon'>▾</span>
                             <label title='Toggle Drop-down' class='drop-icon' for='sm2'>▾</label>
                         </a>
@@ -140,7 +142,7 @@
                         $result_sub = mysqli_query($idcon,$query_sub);
                         while($row_sub=mysqli_fetch_array($result_sub)){
                             echo"
-                            <li><a href='#'>{$row_sub['sub_name']}</a></li>";
+                            <li><a href='jobs_list.php?choice_sub={$row_sub['sub_name']}&choice_cat={$row['cat_name']}'>{$row_sub['sub_name']}</a></li>";
                         }
                             echo"
                             </ul>
@@ -153,21 +155,6 @@
   </nav>
   </h1> 
  
-  <!--radio buttons-->
-  <div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-  <label class="form-check-label" for="exampleRadios1">
-    Default radio
-  </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-    <label class="form-check-label" for="exampleRadios2">
-      Second default radio
-    </label>
-  </div>
-
-
   </div>
  
 

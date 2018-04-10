@@ -153,8 +153,26 @@
   </nav>
   </h1> 
 
+<<<<<<< HEAD
 
   
+=======
+  <!--radio buttons-->
+  <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+    <label class="form-check-label" for="exampleRadios2">
+      Second default radio
+    </label>
+  </div>
+
+
+>>>>>>> 108bba54d0c4e5177122fb9233b6448a68ea6acb
   </div>
  
 

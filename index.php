@@ -207,6 +207,7 @@
                 <input type="checkbox" id="sm1">
 
                 <ul class="sub-menu">
+<<<<<<< HEAD
 
                   <?php
                   include "php/connexion.inc.php";
@@ -220,6 +221,21 @@
                   while ($row = mysqli_fetch_array($result)) {
                     echo "
                         <li><a href='jobs_list.php'>{$row['cat_name']}
+=======
+                
+                <?php
+                    include ("php/connexion.inc.php");
+                    $idcon = connex();
+                    extract($_POST);
+
+                    $query = "SELECT * From category";
+                    $result = mysqli_query($idcon,$query);
+
+                    echo "<link href='css/classes.css' rel='stylesheet'>";
+                    while($row = mysqli_fetch_array($result)){
+                        echo"
+                        <li><a>{$row['cat_name']}
+>>>>>>> c232d5b3efca6f07d8746f81699b3156d93a1fd5
                             <span class='drop-icon'>▾</span>
                             <label title='Toggle Drop-down' class='drop-icon' for='sm2'>▾</label>
                         </a>

@@ -1,3 +1,8 @@
+<?php
+    include 'log.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Welcome to Finleb</title>
+    <title>Job Registration</title>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,40 +26,61 @@
     <!-- Custom styles for this template -->
     <link href="css/full-slider.css" rel="stylesheet">
 
+    <!-- Logged in Logo -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+
 
 
   </head>
   <body>
-
+      
     <!-------------------------------------- Navigation ----------------------------------- -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
-      <div class="container">
-        <a class="navbar-brand" href="#">Finleb</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#exampleModal">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-     <!--  Sign Up -->
+  <div class="container" id="nav">
+    <a class="navbar-brand" href="#">Finleb</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Home
+            <span class="sr-only">(current)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+          <?php
+            if($_SESSION['login'] == 1){
+              echo"
+                <form action='index.php' method='POST' id='logout_form'>
+                  <a href='?function' class='nav-link' id='logout_link' name='logout_link' style='margin-right: 7px;'><i class='fas fa-sign-out-alt'></i> Logout </a> 
+                </form>
+                  </li>
+                  ";
+            }else if($_SESSION['login'] == 0){
+              echo"<a class='nav-link' data-toggle='modal' data-target='#exampleModal' style='margin-right: 6px;'>Login/Sign Up</a>";
+            }
+          ?>
+          
+        </li>
+        <li class="nav-item">
+          <form action="jobs_registration.php" method="POST">
+            <input type="submit" value="Add Business" class="btn btn-outline-success"></input>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+              
+  <script>
+    var form = document.getElementById("logout_form");
+    var link = document.getElementById("logout_link");
+    link.addEventListener("click",function(){form.submit();});
+  </script>
+  
+     <!-- --------------  Sign Up -------------- -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -63,27 +93,29 @@
 
             <form action="index.php" method="POST">
         <div class="tab-content" id="myTabContent">
-              <!-- Sign in division -->
-
+              
+        <!-- Sign in division -->
               <div class="tab-pane fade show active" id="signin_div" role="tabpanel" aria-labelledby="profile-tab" >
+                <p id="error_values" <?php if ($show_err_msg===false){?>style="display:none"<?php } ?> style='color: red;margin-left: 25%;font-size:18px;'> Invalid email or password!</p>
               <label for="email" style="color: #000000;"><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="email" required>
+                  <input type="text" placeholder="Enter Email" name="signin_email" required>
 
               <label for="psw" style="color: #000000;"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
+              <input type="password" placeholder="Enter Password" name="signin_password" required>
 
             <a href="#" onclick="showStuff('register_div', 'signin_div', this); return false;">or Register here</a>
 
-            <div class="modal-footer">
+                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <input type="submit" class="btn btn-primary" value="Sign in" name="signin_submit"></input>
                 </div>
             </div>
         </div>
 </form>
+
 <form action="index.php" method="POST">
         <!-- Register division -->
-        <div class="tab-content" id="myTabContent">
+          <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="register_div" role="tabpanel" aria-labelledby="profile-tab" style="display: none;">
 
                     <table>
@@ -200,18 +232,15 @@
     <ul class="main-menu clearfix">
 
       <li>
-                <a href="#">Select<span class="drop-icon">▾</span>
+                <a>Select<span class="drop-icon">▾</span>
                 <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
                 </a>
 
                 <input type="checkbox" id="sm1">
 
                 <ul class="sub-menu">
-
-                  <?php
-                  include "php/connexion.inc.php";
-                  $idcon = connex();
-                  extract($_POST);
+                
+                 <?php                                  
 
                   $query = "SELECT * From category";
                   $result = mysqli_query($idcon, $query);
@@ -219,7 +248,7 @@
                   echo "<link href='css/classes.css' rel='stylesheet'>";
                   while ($row = mysqli_fetch_array($result)) {
                     echo "
-                        <li><a href='jobs_list.php'>{$row['cat_name']}
+                        <li><a>{$row['cat_name']}
                             <span class='drop-icon'>▾</span>
                             <label title='Toggle Drop-down' class='drop-icon' for='sm2'>▾</label>
                         </a>
@@ -253,6 +282,7 @@
 
   <!-------------------------------------- Division Work ----------------------------------- -->
 <div class="div_work" id="div_work">
+
 </div>
 
 
@@ -286,8 +316,10 @@
 
     <!-- Scripts -->
     <script src="javascript/scripts.js"></script>
-    <script src="javascript/signup.js"></script>
 
   </body>
 
 </html>
+
+
+
